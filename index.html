@@ -357,5 +357,45 @@ if ("serviceWorker" in navigator) {
 }
 </script>
 
+<style>
+#cookieBanner {
+  position: fixed;
+  bottom: 20px;
+  left: 20px;
+  right: 20px;
+  background: #020617;
+  color: #e5e7eb;
+  padding: 20px;
+  border-radius: 12px;
+  display: none;
+  box-shadow: 0 10px 30px rgba(0,0,0,.3);
+  z-index: 9999;
+}
+#cookieBanner button {
+  background:#38bdf8;
+  color:#020617;
+  border:none;
+  padding:10px 20px;
+  border-radius:8px;
+  margin-left:10px;
+  cursor:pointer;
+}
+</style>
+
+<div id="cookieBanner">
+  We use cookies to improve your experience and analyze site traffic.
+  <button onclick="acceptCookies()">Accept</button>
+</div>
+
+<script>
+function acceptCookies() {
+  localStorage.setItem("cookiesAccepted","true");
+  document.getElementById("cookieBanner").style.display="none";
+}
+if(!localStorage.getItem("cookiesAccepted")){
+  document.getElementById("cookieBanner").style.display="block";
+}
+</script>
+
 </body>
 </html>

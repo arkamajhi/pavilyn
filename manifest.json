@@ -1,0 +1,22 @@
+{
+  "name": "Pavilyn - Global Exhibition as a Service",
+  "short_name": "Pavilyn",
+  "description": "Pavilyn helps companies exhibit globally through shared professional pavilions, on-ground representation and lead generation.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0a0a0a",
+  "theme_color": "#4f46e5",
+  "orientation": "portrait-primary",
+  "icons": [
+    {
+      "src": "/icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}

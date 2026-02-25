@@ -1,0 +1,4 @@
+Contact: mailto:security@pavilyn.com
+Expires: 2029-12-31
+Preferred-Languages: en
+Canonical: https://pavilyn.com/security.txt

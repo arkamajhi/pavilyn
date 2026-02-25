@@ -1,0 +1,12 @@
+/* TEAM */
+Founder: Pavilyn Team
+Contact: contact@pavilyn.com
+Location: India
+
+/* SITE */
+Standards: HTML5, CSS3, JavaScript
+SEO: Optimized
+Analytics: Enabled
+
+/* THANKS */
+To all exhibitors and partners worldwide.

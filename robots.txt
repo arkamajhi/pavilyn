@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://pavilyn.com/sitemap.txt
+Sitemap: https://pavilyn.com/sitemap.xml

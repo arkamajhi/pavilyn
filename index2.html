@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="manifest" href="/manifest.json">
+    <meta name="google-site-verification" content="PASTE_YOUR_CODE_HERE">
+    <meta name="theme-color" content="#4f46e5">
+    <meta charset="UTF-8">
+
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-KRBD23FR');</script>
+
+    <title>Pavilyn — Exhibition-as-a-Service Platform</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Pavilyn enables companies to exhibit globally without borders using shared professional pavilions, on-ground representation, and lead generation.">
+
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <style>
+        :root {
+            --bg: #020617;
+            --surface: rgba(15, 23, 42, 0.6);
+            --primary: #38bdf8;
+            --accent: #818cf8;
+            --text: #f1f5f9;
+            --text-dim: #94a3b8;
+        }
+
+        * { margin:0; padding:0; box-sizing:border-box; }
+        html { scroll-behavior: smooth; }
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* --- MAGICAL BACKGROUND --- */
+        .orb {
+            position: fixed;
+            width: 500px; height: 500px;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(56, 189, 248, 0.08) 0%, transparent 70%);
+            filter: blur(60px);
+            z-index: -1;
+            animation: float 20s infinite alternate;
+        }
+
+        @keyframes float {
+            from { transform: translate(-10%, -10%); }
+            to { transform: translate(20%, 20%); }
+        }
+
+        /* --- NAV --- */
+        nav {
+            position: fixed;
+            top: 20px; left: 50%;
+            transform: translateX(-50%);
+            width: 90%; max-width: 1000px;
+            background: rgba(15, 23, 42, 0.7);
+            backdrop-filter: blur(15px);
+            padding: 12px 30px;
+            display: flex; justify-content: space-between; align-items: center;
+            border-radius: 100px;
+            border: 1px solid rgba(255,255,255,0.08);
+            z-index: 1000;
+        }
+        nav span { font-weight: 800; font-size: 1.3rem; letter-spacing: -1px; }
+        nav div a { color: var(--text-dim); text-decoration: none; margin-left: 20px; font-weight: 600; font-size: 0.85rem; transition: 0.3s; }
+        nav div a:hover { color: var(--primary); text-shadow: 0 0 10px var(--primary); }
+
+        /* --- HERO --- */
+        header {
+            min-height: 100vh;
+            display: flex; align-items: center; justify-content: center;
+            text-align: center;
+            padding: 120px 20px;
+            perspective: 1000px;
+        }
+        .hero h1 {
+            font-size: clamp(3rem, 10vw, 5rem);
+            line-height: 1;
+            font-weight: 800;
+            margin-bottom: 25px;
+            transform: translateZ(50px);
+        }
+        .hero h1 span {
+            background: linear-gradient(to right, #fff, var(--primary), var(--accent));
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+            display: block;
+        }
+        .hero p { font-size: 1.2rem; color: var(--text-dim); max-width: 650px; margin: 0 auto 40px; }
+
+        .btn { padding: 18px 36px; border-radius: 50px; font-weight: 700; text-decoration: none; transition: 0.4s; position: relative; overflow: hidden; }
+        .primary { background: var(--primary); color: var(--bg); }
+        .primary:hover { transform: scale(1.05); box-shadow: 0 0 30px rgba(56, 189, 248, 0.4); }
+        .secondary { border: 1px solid rgba(255,255,255,0.1); color: #fff; margin-left: 15px; background: rgba(255,255,255,0.03); }
+        .secondary:hover { background: rgba(255,255,255,0.1); }
+
+        /* --- SECTIONS & GRIDS --- */
+        section { padding: 100px 5%; max-width: 1200px; margin: auto; }
+        h2 { font-size: 2.8rem; text-align: center; margin-bottom: 60px; font-weight: 800; }
+
+        .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 25px; }
+
+        .card {
+            background: var(--surface);
+            padding: 40px;
+            border-radius: 30px;
+            border: 1px solid rgba(255,255,255,0.05);
+            backdrop-filter: blur(10px);
+            transition: 0.5s cubic-bezier(0.2, 0.8, 0.2, 1);
+            position: relative;
+        }
+        .card:hover {
+            transform: translateY(-10px);
+            border-color: var(--primary);
+            background: rgba(56, 189, 248, 0.05);
+        }
+        .card i { color: var(--primary); margin-bottom: 20px; display: block; }
+        .card h3 { font-size: 1.4rem; margin-bottom: 15px; color: #fff; }
+        .card p { color: var(--text-dim); }
+
+        /* --- STATS --- */
+        .stats {
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px; text-align: center;
+            background: linear-gradient(180deg, rgba(255,255,255,0.03), transparent);
+            padding: 60px 20px; border-radius: 40px;
+            border: 1px solid rgba(255,255,255,0.05);
+        }
+        .stat h3 { font-size: 3.5rem; color: var(--primary); margin-bottom: 5px; font-weight: 800; }
+        .stat p { font-size: 0.85rem; color: var(--text-dim); letter-spacing: 2px; text-transform: uppercase; }
+
+        /* --- MARQUEE --- */
+        .marquee { overflow: hidden; padding: 40px 0; mask-image: linear-gradient(to right, transparent, black 15%, black 85%, transparent); }
+        .marquee-track { display: flex; animation: scroll 40s linear infinite; gap: 30px; width: max-content; }
+        .marquee img { width: 400px; height: 250px; object-fit: cover; border-radius: 30px; filter: grayscale(0.2) contrast(1.1); transition: 0.5s; }
+        .marquee img:hover { filter: grayscale(0); transform: scale(1.02); }
+
+        @keyframes scroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+
+        /* --- TESTIMONIALS --- */
+        .testimonial { width: 350px; background: rgba(255,255,255,0.03); padding: 30px; border-radius: 25px; border: 1px solid rgba(255,255,255,0.05); font-style: italic; }
+
+        /* --- REVEAL TRIGGER --- */
+        .reveal { opacity: 0; transform: translateY(40px) scale(0.95); transition: 1s cubic-bezier(0.2, 0.8, 0.2, 1); }
+        .reveal.active { opacity: 1; transform: translateY(0) scale(1); }
+
+        footer { text-align: center; padding: 60px; color: var(--text-dim); border-top: 1px solid rgba(255,255,255,0.05); }
+
+        /* --- COOKIE BANNER --- */
+        #cookieBanner {
+            position: fixed; bottom: -150px; left: 50%; transform: translateX(-50%);
+            width: 90%; max-width: 600px; background: rgba(15, 23, 42, 0.95);
+            backdrop-filter: blur(20px); border: 1px solid var(--primary);
+            padding: 25px; border-radius: 25px; transition: 0.8s cubic-bezier(0.2, 0.8, 0.2, 1);
+            z-index: 10000; text-align: center;
+        }
+        #cookieBanner.show { bottom: 30px; }
+        #cookieBanner button { border: none; padding: 10px 25px; border-radius: 12px; cursor: pointer; font-weight: 700; margin: 5px; transition: 0.3s; }
+    </style>
+</head>
+
+<body>
+
+    <div class="orb"></div>
+    <div class="orb" style="right:0; bottom:0; background: radial-gradient(circle, rgba(99, 102, 241, 0.08) 0%, transparent 70%);"></div>
+
+    <nav>
+        <span>PAVILYN<span style="color:var(--primary)">.</span></span>
+        <div>
+            <a href="#why">Why</a>
+            <a href="#how">How</a>
+            <a href="#offer">Services</a>
+            <a href="#vision">Vision</a>
+            <a href="#contact">Contact</a>
+        </div>
+    </nav>
+
+    <header>
+        <div class="hero reveal">
+            <h1>Exhibit globally,<br><span>Without borders!</span></h1>
+            <p>Pavilyn is an Exhibition-as-a-Service platform that enables companies to participate in international tech and business conferences without the cost, complexity, or local presence usually required.</p>
+            <div style="margin-top: 30px;">
+                <a href="#contact" class="btn primary">Start Exhibiting</a>
+                <a href="#how" class="btn secondary">How It Works</a>
+            </div>
+        </div>
+    </header>
+
+    <section class="reveal">
+        <h2>Trusted by Emerging Global Brands</h2>
+        <div class="stats">
+            <div class="stat"><h3 class="counter" data-target="30">0</h3><p>Events Covered</p></div>
+            <div class="stat"><h3 class="counter" data-target="120">0</h3><p>Brands Represented</p></div>
+            <div class="stat"><h3 class="counter" data-target="15">0</h3><p>Countries Reached</p></div>
+            <div class="stat"><h3 class="counter" data-target="8000">0</h3><p>Leads Generated</p></div>
+        </div>
+    </section>
+
+    <section id="why">
+        <h2 class="reveal">Why Pavilyn?</h2>
+        <div class="grid">
+            <div class="card reveal"><i data-lucide="piggy-bank"></i><h3>Cost Effective</h3><p>Opportunity to share exhibition space with other brands and reduce participation costs by up to 70%.</p></div>
+            <div class="card reveal"><i data-lucide="map"></i><h3>Zero Local Hassle</h3><p>No need for local teams or vendors. We manage everything on-ground.</p></div>
+            <div class="card reveal"><i data-lucide="globe"></i><h3>Global Reach</h3><p>Enter new markets and test demand without opening offices.</p></div>
+            <div class="card reveal"><i data-lucide="award"></i><h3>Professional Presence</h3><p>High-quality pavilion design, branding, demos and lead capture.</p></div>
+        </div>
+    </section>
+
+    <section id="how">
+        <h2 class="reveal">How It Works</h2>
+        <div class="grid">
+            <div class="card reveal"><h3>1️⃣ Choose Your Event</h3><p>Select conferences based on your goals.</p></div>
+            <div class="card reveal"><h3>2️⃣ We Build Pavilion</h3><p>We design and manage your exclusive or a shared pavilion.</p></div>
+            <div class="card reveal"><h3>3️⃣ We Represent You</h3><p>Our staff presents your product.</p></div>
+            <div class="card reveal"><h3>4️⃣ You Get Leads & Insights</h3><p>Receive contacts and reports.</p></div>
+        </div>
+    </section>
+
+    <section class="reveal">
+        <h2>Our Pavilion in Action</h2>
+        <div class="marquee">
+            <div class="marquee-track">
+                <img src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?auto=format&fit=crop&w=800&q=80" alt="Exhibition">
+                <img src="https://images.unsplash.com/photo-1556761175-4b46a572b786?auto=format&fit=crop&w=800&q=80" alt="Booth">
+                <img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=800&q=80" alt="Tech Hall">
+                <img src="https://images.unsplash.com/photo-1540575467063-178a50c2df87?auto=format&fit=crop&w=800&q=80" alt="Exhibition">
+                <img src="https://images.unsplash.com/photo-1556761175-4b46a572b786?auto=format&fit=crop&w=800&q=80" alt="Booth">
+            </div>
+        </div>
+    </section>
+
+    <section id="offer">
+        <h2 class="reveal">What We Offer</h2>
+        <div class="grid">
+            <div class="card reveal"><p>Event consultation & planning</p></div>
+            <div class="card reveal"><p>Pavilion and booth design</p></div>
+            <div class="card reveal"><p>Logistics & setup</p></div>
+            <div class="card reveal"><p>Branding & display materials</p></div>
+            <div class="card reveal"><p>Trained on-ground representatives</p></div>
+            <div class="card reveal"><p>Product demos & presentations</p></div>
+            <div class="card reveal"><p>Lead collection & reporting</p></div>
+            <div class="card reveal"><p>Post-event analytics</p></div>
+        </div>
+    </section>
+
+    <section>
+        <h2 class="reveal">Who Is Pavilyn For?</h2>
+        <div class="grid">
+            <div class="card reveal"><h3>Startups</h3><p>expanding into global markets</p></div>
+            <div class="card reveal"><h3>SaaS</h3><p>& technology companies</p></div>
+            <div class="card reveal"><h3>MSMEs</h3><p>& exporters</p></div>
+            <div class="card reveal"><h3>Institutions</h3><p>Universities & research labs</p></div>
+            <div class="card reveal"><h3>R&D</h3><p>Innovation & R&D teams</p></div>
+            <div class="card reveal"><h3>Remote Teams</h3><p>Companies without local presence abroad</p></div>
+        </div>
+    </section>
+
+    <section class="reveal">
+        <h2>What Our Clients Say</h2>
+        <div class="marquee">
+            <div class="marquee-track">
+                <div class="testimonial">“Pavilyn enabled us to showcase in Europe without sending a team.” — SaaS Founder</div>
+                <div class="testimonial">“We received qualified leads while operating from India.” — Startup CEO</div>
+                <div class="testimonial">“Their pavilion stood out better than many individual booths.” — Marketing Head</div>
+                <div class="testimonial">“Smooth execution and great ROI for us.” — Product Manager</div>
+                <div class="testimonial">“Highly professional and scalable model.” — Innovation Director</div>
+            </div>
+        </div>
+    </section>
+
+    <section id="vision" class="reveal" style="text-align: center;">
+        <h2>Our Vision</h2>
+        <p style="font-size: 1.4rem; max-width: 800px; margin: auto; font-weight: 300;">
+            We believe global exhibitions should be accessible to every company, not just large corporations.
+            <br><br>
+            Pavilyn is building a future where businesses can showcase innovation anywhere in the world — easily, affordably, and professionally.
+        </p>
+    </section>
+
+    <section id="contact" class="reveal">
+        <div style="background: linear-gradient(135deg, rgba(56, 189, 248, 0.1), rgba(129, 140, 248, 0.1)); padding: 80px 40px; border-radius: 40px; text-align: center; border: 1px solid rgba(56, 189, 248, 0.2);">
+            <h2>Ready to Exhibit Without Borders?</h2>
+            <p style="margin-bottom: 40px;">Let Pavilyn be your global pavilion.</p>
+            <a href="mailto:contact@pavilyn.com" class="btn primary">Contact Us Today</a>
+        </div>
+    </section>
+
+    <footer>
+        <p>© 2026 Pavilyn — Exhibition-as-a-Service Platform</p>
+    </footer>
+
+    <div id="cookieBanner">
+        <p style="font-size: 0.9rem; color: var(--text-dim); margin-bottom: 15px;">We use cookies to improve your experience and analyze site traffic.</p>
+        <button onclick="handleCookie('rejected')" style="background: #1e293b; color: #fff;">Reject</button>
+        <button onclick="handleCookie('accepted')" style="background: var(--primary); color: #000;">Accept All</button>
+    </div>
+
+    <script>
+        // Icons
+        lucide.createIcons();
+
+        // Reveal Logic
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('active');
+                }
+            });
+        }, { threshold: 0.15 });
+
+        document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+        // Counters
+        const counters = document.querySelectorAll('.counter');
+        counters.forEach(counter => {
+            const target = +counter.getAttribute('data-target');
+            const observer = new IntersectionObserver((entries) => {
+                if(entries[0].isIntersecting) {
+                    let count = 0;
+                    const update = () => {
+                        const inc = target / 60;
+                        if(count < target) {
+                            count += inc;
+                            counter.innerText = Math.ceil(count) + "+";
+                            setTimeout(update, 20);
+                        } else {
+                            counter.innerText = target + "+";
+                        }
+                    };
+                    update();
+                }
+            });
+            observer.observe(counter);
+        });
+
+        // Cookies
+        const banner = document.getElementById('cookieBanner');
+        if(!localStorage.getItem('cookieConsent')) {
+            setTimeout(() => banner.classList.add('show'), 2000);
+        }
+        function handleCookie(choice) {
+            localStorage.setItem('cookieConsent', choice);
+            banner.classList.remove('show');
+        }
+    </script>
+</body>
+</html>
